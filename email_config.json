@@ -1,0 +1,10 @@
+{
+  "provider": "smtp",
+  "to_email": "drummerforger@gmail.com",
+  "from_email": "drummerforger@gmail.com",
+  "smtp_server": "smtp.gmail.com",
+  "smtp_port": 587,
+  "smtp_username": "drummerforger@gmail.com",
+  "smtp_password": "ggylxnvwacigbqcx",
+  "enable_html": true
+}

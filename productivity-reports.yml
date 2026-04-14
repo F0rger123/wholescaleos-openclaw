@@ -1,0 +1,109 @@
+name: Productivity Reports
+
+on:
+  schedule:
+    # Morning report at 7:00 AM EST (12:00 UTC)
+    - cron: '0 12 * * *'
+    # Evening report at 8:00 PM EST (01:00 UTC next day)
+    - cron: '0 1 * * *'
+  workflow_dispatch:  # Allow manual triggering
+
+jobs:
+  generate-report:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Fetch all history for commit analysis
+    
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests google-generativeai resend
+    
+    - name: Determine report type
+      id: report-type
+      run: |
+        # Check if it's morning (7 AM) or evening (8 PM) based on UTC
+        CURRENT_HOUR_UTC=$(date -u +%H)
+        if [ "$CURRENT_HOUR_UTC" = "12" ]; then
+          echo "REPORT_TYPE=morning" >> $GITHUB_OUTPUT
+        elif [ "$CURRENT_HOUR_UTC" = "01" ]; then
+          echo "REPORT_TYPE=evening" >> $GITHUB_OUTPUT
+        else:
+          # For manual runs, default to evening
+          echo "REPORT_TYPE=evening" >> $GITHUB_OUTPUT
+        fi
+    
+    - name: Create configuration
+      run: |
+        mkdir -p config
+        cat > config/secrets.json << EOF
+        {
+          "GITHUB_TOKEN": "${{ secrets.GITHUB_TOKEN }}",
+          "REPO_OWNER": "${{ github.repository_owner }}",
+          "REPO_NAME": "${{ github.event.repository.name }}",
+          "GEMINI_API_KEY": "${{ secrets.GEMINI_API_KEY }}",
+          "EMAIL": {
+            "provider": "resend",
+            "api_key": "${{ secrets.RESEND_API_KEY }}",
+            "from_email": "productivity@yourdomain.com",
+            "to_email": "${{ secrets.REPORT_RECIPIENT_EMAIL }}"
+          }
+        }
+        EOF
+        
+        # Create data directory and todo list if it doesn't exist
+        mkdir -p data
+        if [ ! -f data/todo_list.json ]; then
+          cat > data/todo_list.json << 'TODOFILE'
+          {
+            "categories": {
+              "high_priority": [
+                "Implement core system bootloader",
+                "Set up basic kernel modules",
+                "Create package management system"
+              ],
+              "medium_priority": [
+                "Design filesystem structure",
+                "Implement user authentication system",
+                "Build network stack"
+              ],
+              "low_priority": [
+                "Create system monitoring tools",
+                "Implement logging system",
+                "Design CLI interface"
+              ]
+            },
+            "completed": [
+              "Project initialization",
+              "Repository setup",
+              "Basic README documentation"
+            ],
+            "last_updated": "$(date -Iseconds)"
+          }
+          TODOFILE
+        fi
+    
+    - name: Generate report
+      env:
+        REPORT_TYPE: ${{ steps.report-type.outputs.REPORT_TYPE }}
+      run: |
+        python scripts/report_generator.py --type $REPORT_TYPE
+    
+    - name: Upload report artifacts
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: productivity-report-${{ steps.report-type.outputs.REPORT_TYPE }}-${{ github.run_id }}
+        path: |
+          reports/
+          logs/
+        retention-days: 7

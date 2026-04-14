@@ -1,0 +1,63 @@
+# COPY AND PASTE THESE COMMANDS IN CLOUD SHELL:
+
+# 1. Create directory
+mkdir openclaw-cloud
+cd openclaw-cloud
+
+# 2. Create Dockerfile
+cat > Dockerfile << 'EOF'
+# OpenClaw on Google Cloud Run
+FROM node:22-alpine
+
+# Install OpenClaw globally
+RUN npm install -g openclaw
+
+# Create workspace directory
+RUN mkdir -p /app/workspace
+WORKDIR /app/workspace
+
+# Install Python dependencies
+RUN apk add --no-cache python3 py3-pip
+
+# Set environment variables for cloud operation
+ENV OPENCLAW_STATE_DIR=/app/state
+ENV OPENCLAW_WORKSPACE=/app/workspace
+ENV RUN_MODE=cloud
+
+# Create state directory
+RUN mkdir -p /app/state
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD wget --no-verbose --tries=1 --spider http://localhost:8080/health || exit 1
+
+# Start OpenClaw gateway
+CMD ["openclaw", "gateway", "--port", "8080", "--bind", "0.0.0.0"]
+EOF
+
+# 3. Create requirements.txt (empty for now)
+echo "" > requirements.txt
+
+# 4. Create README
+cat > README.md << 'EOF'
+# OpenClaw on Google Cloud Run
+24/7 WholescaleOS Productivity System
+
+## Features:
+- Beautiful Twin.so style reports
+- WhatsApp integration
+- Voice messages (TTS/STT)
+- Google Doc sync
+- 110 todo items tracked
+- Automated daily reports
+EOF
+
+# 5. List files
+ls -la
+
+# 6. Build and deploy
+echo "✅ Files created! Now go back to Cloud Run setup and:"
+echo "1. Select 'Cloud Storage' for container"
+echo "2. Click 'BROWSE'"
+echo "3. Look for 'openclaw-cloud' folder"
+echo "4. Or use: gcloud builds submit --tag gcr.io/$PROJECT_ID/openclaw ."

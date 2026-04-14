@@ -1,0 +1,139 @@
+🧠 WHOLE SCALE OS - MASTER FIXES & FEATURES LIST
+
+🔴 HIGH PRIORITY - CURRENTLY BROKEN (Fix NOW)
+
+1. OS Bot Typing Animation: Not showing consistently
+2. SMS Message Count: Inbox shows wrong number (596 and climbing)
+3. PDF Import: Not fully functional
+4. Undo/Redo Buttons: Not working properly
+5. Team Chat Persistence: Messages don't save after reload/navigation
+6. 2FA: Not actually working
+7. Forget Password: Flow broken
+8. Voice Messages / Videos / Files in Chat: Mockups, not functional
+9. Team Dashboard Revenue Split: Still has mock data
+10. Team Calendar Email Notifications: Not working
+11. Incoming SMS: Texts to OS Bot number don't arrive. Outgoing works.
+12. OS Bot Badge: Still shows "✨ Google Gemini" sometimes instead of "🤖 OS Bot"
+13. Paste Anything Import: Parsing logic broken for raw text (emails, names, addresses)
+14. Create Workflow / Automation: Buttons don't create working automations; templates open blank
+15. Sidebar Collapse Button: Button moved, expand button disappears when collapsed
+16. Moon Theme Contrast: Still has white-on-white buttons in some places
+17. Delete/Leave Team Option: Missing
+
+🟡 MEDIUM PRIORITY - IMPORTANT FEATURES
+
+1. Voice Notes: Record voice note, AI transcribes to task/lead note
+2. AI Deal Strategy Planner: Step-by-step strategy (Call → Offer → Follow-up)
+3. AI Profit Predictor: Wholesale vs Traditional MLS comparison
+4. Team Dashboard Seats Used: Show seats used / total
+5. Team Dashboard Performance Milestones: Add goals, update progress
+6. Team Analytics Hub: All numbers real data (no mock)
+7. Top Performers Leaderboard: Add revenue column
+8. Public Agent Profile: Agent bio, specialties, photo upload, shareable link
+9. Property Distress AI Analyzer: Upload photo, detect peeling paint, roof damage, etc.
+10. Lead Score Explanations: AI-powered hover tooltip explaining score
+11. Workflows Section: N8N-style visual builder, custom workflows
+12. Lead Share Pages: Public shareable lead pages (share.wholescaleos.com/lead/123)
+13. Lead Conversion Funnel: Visual: Lead → Contact → Showing → Offer → Closed
+14. AI Follow-Up Text Bot: Suggest/send automated follow-ups
+15. AI Daily Action Plan: Personalized daily goals based on historical productivity
+16. Individual Agent Metrics: Per-agent stats in Team Dashboard (more personalized)
+17. Auto Lead Source Tracker: Track where leads come from
+
+🟢 LOW PRIORITY - NICE TO HAVE
+
+1. User Type Signup & Questionnaire: Agent, Investor, Buyer, Seller, Contractor
+2. Lead Marketplace: Buy/sell leads, map view, pricing tiers
+3. Referral Network: Commission splits, payout tracking
+4. Course Marketplace: Agents create/sell courses, platform takes 30%
+5. Coaching Marketplace: 1-on-1 coaching, 20% commission
+6. Vendor Marketplace: Lenders, inspectors pay for placement
+7. Wake Word: 'Hey OS Bot' activates hands-free mode
+8. AI Call Log Transcriber: Upload call notes/audio, transcribe
+9. Fix Next Step AI Helper: Show next best action inside lead case file
+10. AI Assistant (Platform-wide): Help with CRM tasks, answer questions
+11. Autonomous CRM Mode: Auto-find leads, score leads, suggest offers
+12. AI Seller Probability Meter: Based on motivation, equity, communication
+13. AI Distressed Zone Scanner: Map-based property distress detection
+14. Property Distress AI Analyzer: Detect issues from photos
+15. Zillow FSBO Integration: Auto-import for sale by owner
+16. Tax Delinquent Lists: County records import
+17. Pre-foreclosure Sites: Public record scraping
+18. Sheriff Sale Sites: Auction data import
+19. Absentee Owner Finder: Identify out-of-state landlords
+20. Multi-Property Owner Detector: Identify landlords
+21. Tenant Turner Integration: API key for tenant screening
+22. A2P10DLC Verification: SMS compliance, avoid spam marking
+23. Do Not Call List Check: Automatic workflow check
+24. Lease Agreement Templates: AI fill from PDF/screenshots
+25. Dialer Outbounder: Different number per call, call tracking
+26. Call Logging: 'Call Franco' → dials phone, logs call to lead
+27. Lead Aging Tracker: Countdown timers (pre-foreclosure urgency)
+28. Instant Lead Sharing: share.wholescaleos.com/lead123
+29. Profit Projection Dashboard: Estimated monthly profit
+30. Assign Members to Group Chats: Team collaboration
+31. Team Productivity Status: Active, Offline, Busy, DND
+32. Daily Tasks / To-Do System: Built-in task management
+33. @Mentions: In chat and comments
+34. White Label Selling System: Let others resell your platform
+35. Driving Mode: Simplified interface, larger buttons, louder voice
+36. Productivity Level System: Depreciation for inactivity, streak tracking
+37. Multi-Photo Property Viewer: Auto-scrape images from Google, Homes.com
+38. Toggle Animations & Effects: On/off for performance
+39. We should add AI-powered code review suggestions
+40. Lead Marketplace: Buy/sell leads, map view, pricing tiers, credits system
+41. User Type Signup & Questionnaire: Agent, Investor, Buyer, Seller, Contractor with tailored questions
+42. MLS Link Import: Import properties via MLS link
+43. AI Call Log Transcriber: Upload call notes/audio, transcribe, suggest next steps
+44. AI Lead Priority Queue: Sort leads by AI-determined priority
+45. Local Market Trend Widget: ARV trend, price movement, hot zip codes
+46. Facebook Ads API: Direct lead import from FB ads
+47. Wake Word: "Hey OS Bot" activates hands-free mode
+48. Profit Projection Dashboard: Estimated monthly profit, expected revenue
+49. Property Distress AI Analyzer: Detect peeling paint, roof damage, boarded windows from photos
+50. Autonomous CRM Mode: Auto-find leads, score leads, suggest offers, generate texts
+51. White Label Selling System: Let others resell your platform ($$$)
+52. Call Logging: "Call Franco" → dials phone, logs call to lead
+53. Sales/Profit/Earnings Counter: Real-time volume counter
+54. AI Assistant (Platform-wide): Help with CRM tasks, answer questions, guide users
+55. Tax Delinquent Lists: County records import (free public data)
+56. Fix Next Step AI Helper: Show next best action inside lead case file, clickable guidance
+
+💡 NEW IDEAS & FUTURE FEATURES
+
+1. User Type Signup & Questionnaire: Agent, Investor, Buyer, Seller, Contractor
+2. Lead Marketplace: Buy/sell leads, map view, pricing tiers
+3. Course Marketplace: Agents create/sell courses, platform takes 30%
+4. Coaching Marketplace: 1-on-1 coaching, 20% commission
+5. Vendor Marketplace: Lenders, inspectors pay for placement
+6. AI Call Log Transcriber: Upload call notes/audio, transcribe
+7. Fix Next Step AI Helper: Show next best action inside lead case file
+8. AI Assistant (Platform-wide): Help with CRM tasks, answer questions
+9. AI Seller Probability Meter: Based on motivation, equity, communication
+10. AI Distressed Zone Scanner: Map-based property distress detection
+11. Property Distress AI Analyzer: Detect issues from photos
+12. Zillow FSBO Integration: Auto-import for sale by owner
+13. Tenant Turner Integration: API key for tenant screening
+14. Lease Agreement Templates: AI fill from PDF/screenshots
+15. Profit Projection Dashboard: Estimated monthly profit
+16. Daily Tasks / To-Do System: Built-in task management
+17. We should add AI-powered code review suggestions
+18. Lead Marketplace: Buy/sell leads, map view, pricing tiers, credits system
+19. User Type Signup & Questionnaire: Agent, Investor, Buyer, Seller, Contractor with tailored questions
+20. AI Call Log Transcriber: Upload call notes/audio, transcribe, suggest next steps
+
+✅ COMPLETED
+
+1. AI Follow-Up Text Bot: Suggest/send automated follow-ups
+2. Public Agent Profile: Agent bio, specialties, photo upload
+3. Auto Lead Source Tracker: Track where leads come from
+4. Individual Agent Metrics: Per-agent stats in Team Dashboard
+5. AI Lead Priority Queue: Sort leads by AI-determined priority
+6. Facebook Ads API: Direct lead import from FB ads
+7. MLS Link Import: Import properties via MLS link
+8. Sales/Profit/Earnings Counter: Real-time volume counter
+9. Local Market Trend Widget: ARV trend, price movement, hot zip codes
+10. OS Bot Intelligence: Poor intent recognition: "what's up", "what's the weather", "what are my preferences" fail
+
+📅 Last updated: 2026-04-14 01:47
+📊 Stats: 17 high, 17 medium, 56 low priority items

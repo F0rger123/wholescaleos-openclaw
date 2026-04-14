@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Google Cloud Run Setup Guide</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .step { background: #f5f5f5; padding: 20px; margin: 20px 0; border-radius: 10px; }
+        .step-number { background: #4285f4; color: white; width: 30px; height: 30px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 10px; }
+        .screenshot { max-width: 100%; border: 1px solid #ddd; border-radius: 5px; margin: 10px 0; }
+        .button { background: #4285f4; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; margin: 10px 0; }
+        .note { background: #fff3cd; border-left: 4px solid #ffc107; padding: 10px; margin: 10px 0; }
+        .warning { background: #f8d7da; border-left: 4px solid #dc3545; padding: 10px; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h1>🚀 Google Cloud Run Setup Guide</h1>
+    
+    <div class="step">
+        <h2><span class="step-number">1</span> Go to Cloud Run</h2>
+        <p><a href="https://console.cloud.google.com/run" class="button" target="_blank">Open Cloud Run</a></p>
+        <p>Make sure you're in project: <strong>My First Project</strong></p>
+    </div>
+    
+    <div class="step">
+        <h2><span class="step-number">2</span> Create Service</h2>
+        <p>Click: <strong>CREATE SERVICE</strong></p>
+        <p>Fill in:</p>
+        <ul>
+            <li><strong>Service name:</strong> openclaw-wholescaleos</li>
+            <li><strong>Region:</strong> us-central1 (Iowa)</li>
+        </ul>
+    </div>
+    
+    <div class="step">
+        <h2><span class="step-number">3</span> Container Settings</h2>
+        <p>Under "Container" section:</p>
+        <ol>
+            <li>Select: <strong>Continuously deploy new revisions from a source repository</strong></li>
+            <li>Click: <strong>SET UP WITH CLOUD BUILD</strong></li>
+            <li>Select: <strong>GitHub (Cloud Build GitHub App)</strong></li>
+            <li>Click: <strong>CONNECT</strong></li>
+        </ol>
+        
+        <div class="note">
+            <p><strong>Note:</strong> If you don't want to connect GitHub, we can use Cloud Shell instead.</p>
+        </div>
+    </div>
+    
+    <div class="step">
+        <h2><span class="step-number">4</span> Repository Connection</h2>
+        <p>After connecting GitHub:</p>
+        <ol>
+            <li>Select repository: <strong>[I'll create one for you]</strong></li>
+            <li>Branch: <strong>main</strong></li>
+            <li>Build type: <strong>Dockerfile</strong></li>
+            <li>Dockerfile location: <strong>/Dockerfile</strong></li>
+        </ol>
+    </div>
+    
+    <div class="step">
+        <h2><span class="step-number">5</span> Service Configuration</h2>
+        <p>Scroll down and set:</p>
+        <ul>
+            <li><strong>Authentication:</strong> ☑ Allow unauthenticated invocations</li>
+            <li><strong>Container port:</strong> 8080</li>
+            <li><strong>Memory allocated:</strong> 512 MiB</li>
+            <li><strong>CPU:</strong> 1</li>
+            <li><strong>Minimum instances:</strong> 0</li>
+            <li><strong>Maximum instances:</strong> 1</li>
+        </ul>
+    </div>
+    
+    <div class="step">
+        <h2><span class="step-number">6</span> Environment Variables</h2>
+        <p>Click: <strong>ADD VARIABLE</strong></p>
+        <ul>
+            <li><strong>Name:</strong> RUN_MODE</li>
+            <li><strong>Value:</strong> cloud</li>
+        </ul>
+        <p>Click: <strong>ADD VARIABLE</strong> again</p>
+        <ul>
+            <li><strong>Name:</strong> OPENCLAW_WORKSPACE</li>
+            <li><strong>Value:</strong> /app/workspace</li>
+        </ul>
+    </div>
+    
+    <div class="step">
+        <h2><span class="step-number">7</span> Create & Deploy</h2>
+        <p>Click: <strong>CREATE</strong></p>
+        <p>Wait 5-10 minutes for deployment</p>
+    </div>
+    
+    <div class="step">
+        <h2><span class="step-number">8</span> Get Your URL</h2>
+        <p>After deployment, you'll get a URL like:</p>
+        <p><code>https://openclaw-wholescaleos-xxxxxxxx-xx.a.run.app</code></p>
+        <p>Bookmark this URL - it's your 24/7 OpenClaw!</p>
+    </div>
+    
+    <div class="warning">
+        <h3>⚠️ Important Notes:</h3>
+        <ul>
+            <li>Keep your $300 credits - this will use very little</li>
+            <li>Cost estimate: $5-10/month after credits</li>
+            <li>With $300 credits: 3+ months FREE</li>
+            <li>Minimum instances: 0 saves money when idle</li>
+        </ul>
+    </div>
+    
+    <div class="note">
+        <h3>💡 Need Help?</h3>
+        <p>At ANY step, you can:</p>
+        <ol>
+            <li>Take a screenshot and share</li>
+            <li>Ask me what to click next</li>
+            <li>Use Cloud Shell for commands</li>
+        </ol>
+    </div>
+</body>
+</html>
