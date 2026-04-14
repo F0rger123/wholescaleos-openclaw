@@ -1,0 +1,29 @@
+# WholescaleOS Todo/Build List
+
+## High Priority
+- [ ] Implement core system bootloader
+- [ ] Set up basic kernel modules
+- [ ] Create package management system
+- [ ] Design filesystem structure
+- [ ] Implement user authentication system
+
+## Medium Priority
+- [ ] Build network stack
+- [ ] Create system monitoring tools
+- [ ] Implement logging system
+- [ ] Design CLI interface
+- [ ] Set up development environment
+
+## Low Priority
+- [ ] Create documentation framework
+- [ ] Build testing infrastructure
+- [ ] Implement backup system
+- [ ] Design update mechanism
+- [ ] Create user onboarding flow
+
+## Completed
+- [x] Project initialization
+- [x] Repository setup
+- [x] Basic README documentation
+- [x] License selection (MIT)
+- [x] CI/CD pipeline setup

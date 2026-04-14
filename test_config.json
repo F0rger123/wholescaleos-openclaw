@@ -1,0 +1,12 @@
+{
+  "GITHUB_TOKEN": "test_token",
+  "REPO_OWNER": "F0rger123",
+  "REPO_NAME": "wholescaleos",
+  "GEMINI_API_KEY": "test_gemini_key",
+  "EMAIL": {
+    "provider": "resend",
+    "api_key": "test_resend_key",
+    "from_email": "productivity@wholescaleos.com",
+    "to_email": "drummerforger@gmail.com"
+  }
+}

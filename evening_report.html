@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evening Productivity Report - {{date}}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .header .date {
+            opacity: 0.9;
+            font-size: 14px;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #4a5568;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .activity-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .activity-stat {
+            text-align: center;
+            padding: 20px;
+            background: #f8fafc;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .activity-number {
+            font-size: 32px;
+            font-weight: 700;
+            color: #2d3748;
+            display: block;
+        }
+        
+        .activity-label {
+            font-size: 14px;
+            color: #718096;
+            margin-top: 5px;
+        }
+        
+        .productivity-score {
+            text-align: center;
+            padding: 25px;
+            background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+        
+        .score-visual {
+            font-size: 24px;
+            letter-spacing: 2px;
+            margin: 15px 0;
+            color: #2d3748;
+        }
+        
+        .score-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: #2d3748;
+            margin: 10px 0;
+        }
+        
+        .score-label {
+            font-size: 16px;
+            color: #718096;
+        }
+        
+        .comparison {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 15px;
+            font-size: 14px;
+            color: #718096;
+        }
+        
+        .todo-list {
+            list-style: none;
+        }
+        
+        .todo-list li {
+            padding: 15px;
+            margin-bottom: 10px;
+            background: #f7fafc;
+            border-left: 4px solid #ed8936;
+            border-radius: 0 8px 8px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .todo-list li.overdue {
+            border-left-color: #f56565;
+            background: #fff5f5;
+        }
+        
+        .todo-list li:before {
+            content: "•";
+            color: #ed8936;
+            font-size: 24px;
+            margin-right: 10px;
+        }
+        
+        .todo-list li.overdue:before {
+            content: "⚠️";
+            color: #f56565;
+        }
+        
+        .summary-box {
+            background: #f0fff4;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #68d391;
+            margin-bottom: 20px;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #718096;
+            font-size: 14px;
+            border-top: 1px solid #e2e8f0;
+            background: #f8fafc;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 4px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #68d391, #38b2ac);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+        
+        @media (max-width: 480px) {
+            .content {
+                padding: 20px;
+            }
+            
+            .activity-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .header {
+                padding: 20px;
+            }
+            
+            .score-number {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌙 Evening Productivity Report</h1>
+            <div class="date">{{date}}</div>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <h2 class="section-title">📈 Today's Activity</h2>
+                <div class="activity-stats">
+                    <div class="activity-stat">
+                        <span class="activity-number">{{productivity.commits_count}}</span>
+                        <span class="activity-label">Commits</span>
+                    </div>
+                    <div class="activity-stat">
+                        <span class="activity-number">{{productivity.files_changed}}</span>
+                        <span class="activity-label">Files Changed</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="summary-box">
+                <strong>Summary:</strong> {{today_summary}}
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">📊 Productivity Score</h2>
+                <div class="productivity-score">
+                    <div class="score-visual">{{productivity.visual}}</div>
+                    <div class="score-number">{{productivity.score|int}}%</div>
+                    <div class="score-label">Today's Performance</div>
+                    
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: {{productivity.score}}%"></div>
+                    </div>
+                    
+                    <div class="comparison">
+                        <div>Todo Completion: {{todo_analysis.completion_rate|int}}%</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">🔮 Tomorrow's Preview</h2>
+                <ul class="todo-list">
+                    {{tomorrow_preview}}
+                </ul>
+            </div>
+            
+            {% if overdue_items %}
+            <div class="section">
+                <h2 class="section-title">⚠️ High Priority Items</h2>
+                <ul class="todo-list">
+                    {{overdue_items}}
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+        
+        <div class="footer">
+            <p>Generated automatically by your GitHub Productivity Monitor</p>
+            <p>Repository: {{repo_owner}}/{{repo_name}}</p>
+        </div>
+    </div>
+</body>
+</html>
