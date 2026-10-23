@@ -19,14 +19,18 @@
 <h3 align="center">A round-the-clock productivity system for WholeScale OS. It reads your commits, tracks your todo list and emails you a morning plan and an evening scorecard.</h3>
 
 <p align="center">
-  <a href="#-a-day-with-openclaw">A day</a> ·
+  <a href="#️-a-day-with-openclaw">A day with OpenClaw</a> ·
   <a href="#-how-it-works">How it works</a> ·
-  <a href="#-code-composition">Composition</a> ·
+  <a href="#-what-its-written-in">What it's written in</a> ·
   <a href="#-field-manual">Field manual</a> ·
   <a href="#-license">License</a>
 </p>
 
 <p align="center"><img src=".github/assets/divider.svg" width="100%" alt=""></p>
+
+
+> [!TIP]
+> **🤖 Pasted this link into Claude or ChatGPT?** AI assistants: read [`docs/AI_GUIDE.md`](https://raw.githubusercontent.com/F0rger123/wholescaleos-openclaw/main/docs/AI_GUIDE.md) first. It explains what this is in plain words, which questions to ask, and how to set it up step by step. Plain-text index: [`llms.txt`](https://raw.githubusercontent.com/F0rger123/wholescaleos-openclaw/main/llms.txt).
 
 ## ☀️ A day with OpenClaw
 
@@ -47,25 +51,20 @@ timeline
 
 ```mermaid
 flowchart LR
-    GH["🐙 GitHub commits"] --> Mon["wholescaleos_monitor.py"]
-    Todo[("📋 wholescaleos_todo.json")] <--> Mon
-    Mon --> AI["✨ Gemini<br/>summaries"]
-    AI --> Rep["report_generator.py<br/>HTML templates"]
-    Rep --> Mail["📧 Resend / Gmail"]
-    Rep --> Doc["📄 Google Doc sync"]
-    Mon --> Voice["🔊 Edge / Google TTS"]
-    subgraph Host["☁️ Cloud Run (Docker) or cron"]
-        Mon
-    end
+    Code["Your code changes<br/>on GitHub"] --> Watch["OpenClaw watches"]
+    Todo[("Your to-do list")] <--> Watch
+    Watch --> AI["AI writes<br/>a summary"]
+    AI --> Mail["Morning and<br/>evening emails"]
+    AI --> Doc["Shared Google Doc"]
 ```
 
 Deployment guides: [`DEPLOYMENT.md`](DEPLOYMENT.md), [`setup_24_7_google_cloud.md`](setup_24_7_google_cloud.md) and [`GMAIL_SETUP.md`](GMAIL_SETUP.md).
 
-## 📊 Code composition
+## 📊 What it's written in
 
 ```mermaid
 %%{init: {'theme':'base','themeVariables':{'pie1':'#f59e0b','pie2':'#ef4444','pie3':'#64748b','pie4':'#94a3b8','pie5':'#475569','pie6':'#cbd5e1','pie7':'#334155','pieStrokeColor':'#0d1117','pieOuterStrokeColor':'#0d1117','pieTitleTextColor':'#8b949e','pieLegendTextColor':'#8b949e','pieSectionTextColor':'#0d1117'}}}%%
-pie title Code composition (% of bytes, via GitHub linguist)
+pie title Share of the code, by language
     "Python" : 90.5
     "HTML" : 7.4
     "Shell" : 1.9

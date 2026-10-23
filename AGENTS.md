@@ -2,6 +2,10 @@
 
 This folder is home. Treat it that way.
 
+## 0. First thing
+
+Someone pasted this repo's link and asked what it is or how to set it up? Follow [`docs/AI_GUIDE.md`](docs/AI_GUIDE.md): what it is in plain words, what to ask, setup steps with checks. The rules below still apply.
+
 ## First Run
 
 If `BOOTSTRAP.md` exists, that's your birth certificate. Follow it, figure out who you are, then delete it. You won't need it again.

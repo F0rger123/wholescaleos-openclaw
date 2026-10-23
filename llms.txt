@@ -1,0 +1,11 @@
+# wholescaleos-openclaw
+
+> A productivity bot for the WholeScale OS project: it watches your code changes and to-do list and sends morning and evening report emails.
+
+If a person shared this repository with you, read the AI guide first.
+
+## Start here
+- [AI guide](https://raw.githubusercontent.com/F0rger123/wholescaleos-openclaw/main/docs/AI_GUIDE.md): what it is, what to ask, setup steps, how to use it
+- [README](https://raw.githubusercontent.com/F0rger123/wholescaleos-openclaw/main/README.md)
+- [Deploying](https://raw.githubusercontent.com/F0rger123/wholescaleos-openclaw/main/DEPLOYMENT.md)
+- [Gmail setup](https://raw.githubusercontent.com/F0rger123/wholescaleos-openclaw/main/GMAIL_SETUP.md)
