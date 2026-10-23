@@ -36,6 +36,11 @@ class EmailReporter:
             with open(self.config_file, 'r') as f:
                 user_config = json.load(f)
                 default_config.update(user_config)
+            # Secrets come from the environment when set, so they never need to live in the repo
+            if os.environ.get("SMTP_PASSWORD"):
+                default_config["smtp_password"] = os.environ["SMTP_PASSWORD"]
+            if os.environ.get("RESEND_API_KEY"):
+                default_config["resend_api_key"] = os.environ["RESEND_API_KEY"]
         except (FileNotFoundError, json.JSONDecodeError):
             print(f"Config file {self.config_file} not found or invalid. Using defaults.")
             # Create template config

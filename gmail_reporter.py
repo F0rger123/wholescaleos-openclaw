@@ -5,6 +5,7 @@ Sends email reports via Gmail SMTP.
 """
 
 import json
+import os
 import smtplib
 from email.mime.text import MIMEText
 from datetime import datetime
@@ -19,6 +20,10 @@ class GmailReporter:
         try:
             with open("email_config.json", 'r') as f:
                 config = json.load(f)
+
+            # Prefer the app password from the environment so it never lives in the repo
+            if os.environ.get("SMTP_PASSWORD"):
+                config["smtp_password"] = os.environ["SMTP_PASSWORD"]
                 
             # Check if password is still the placeholder
             if config.get("smtp_password") == "YOUR_GMAIL_APP_PASSWORD_HERE":
