@@ -1,4 +1,80 @@
-# GitHub Productivity Monitor
+<p align="center">
+  <img src=".github/assets/banner.svg" alt="OPENCLAW: A 24/7 copilot that watches your commits and reports back." width="100%">
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/status-public-f59e0b?style=for-the-badge" alt="Public">
+  <img src="https://img.shields.io/badge/license-MIT-f59e0b?style=for-the-badge" alt="License">
+  <img src="https://img.shields.io/github/last-commit/F0rger123/wholescaleos-openclaw?style=for-the-badge&color=f59e0b" alt="Last commit">
+  <img src="https://img.shields.io/github/repo-size/F0rger123/wholescaleos-openclaw?style=for-the-badge&color=f59e0b" alt="Repo size">
+</p>
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-0d1117?style=flat-square&logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/Gemini-0d1117?style=flat-square&logo=googlegemini&logoColor=white" alt="Gemini">
+  <img src="https://img.shields.io/badge/Docker-0d1117?style=flat-square&logo=docker&logoColor=white" alt="Docker">
+  <img src="https://img.shields.io/badge/Cloud%20Run-0d1117?style=flat-square&logo=googlecloud&logoColor=white" alt="Cloud Run">
+  <img src="https://img.shields.io/badge/GitHub%20Actions-0d1117?style=flat-square&logo=githubactions&logoColor=white" alt="GitHub Actions">
+</p>
+
+<h3 align="center">A round-the-clock productivity system for WholeScale OS. It reads your commits, tracks your todo list and emails you a morning plan and an evening scorecard.</h3>
+
+<p align="center">
+  <a href="#-a-day-with-openclaw">A day</a> ·
+  <a href="#-how-it-works">How it works</a> ·
+  <a href="#-code-composition">Composition</a> ·
+  <a href="#-field-manual">Field manual</a> ·
+  <a href="#-license">License</a>
+</p>
+
+<p align="center"><img src=".github/assets/divider.svg" width="100%" alt=""></p>
+
+## ☀️ A day with OpenClaw
+
+```mermaid
+timeline
+    title A WholeScale OS workday
+    7 AM EST : Morning report
+            : Yesterday's commits + today's focus
+    All day : Commit watcher
+            : Ideas logged to wholescaleos_ideas.log
+            : Todos ticked off from commit messages
+    8 PM EST : Evening report
+            : Activity + productivity score
+            : Google Doc sync
+```
+
+## 🧠 How it works
+
+```mermaid
+flowchart LR
+    GH["🐙 GitHub commits"] --> Mon["wholescaleos_monitor.py"]
+    Todo[("📋 wholescaleos_todo.json")] <--> Mon
+    Mon --> AI["✨ Gemini<br/>summaries"]
+    AI --> Rep["report_generator.py<br/>HTML templates"]
+    Rep --> Mail["📧 Resend / Gmail"]
+    Rep --> Doc["📄 Google Doc sync"]
+    Mon --> Voice["🔊 Edge / Google TTS"]
+    subgraph Host["☁️ Cloud Run (Docker) or cron"]
+        Mon
+    end
+```
+
+Deployment guides: [`DEPLOYMENT.md`](DEPLOYMENT.md), [`setup_24_7_google_cloud.md`](setup_24_7_google_cloud.md) and [`GMAIL_SETUP.md`](GMAIL_SETUP.md).
+
+## 📊 Code composition
+
+```mermaid
+%%{init: {'theme':'base','themeVariables':{'pie1':'#f59e0b','pie2':'#ef4444','pie3':'#64748b','pie4':'#94a3b8','pie5':'#475569','pie6':'#cbd5e1','pie7':'#334155','pieStrokeColor':'#0d1117','pieOuterStrokeColor':'#0d1117','pieTitleTextColor':'#8b949e','pieLegendTextColor':'#8b949e','pieSectionTextColor':'#0d1117'}}}%%
+pie title Code composition (% of bytes, via GitHub linguist)
+    "Python" : 90.5
+    "HTML" : 7.4
+    "Shell" : 1.9
+    "Other" : 0.1
+```
+
+<p align="center"><img src=".github/assets/divider.svg" width="100%" alt=""></p>
+
+## 📚 Field manual
 
 An automated system that monitors your GitHub commits and sends daily productivity reports via email.
 
@@ -88,3 +164,13 @@ See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed setup instructions and troublesh
 2. Follow the deployment guide
 3. Test with dry-run mode
 4. Enjoy automated productivity insights!
+
+## 📜 License
+
+Released under the [MIT License](LICENSE). Use it, fork it, ship it.
+
+<p align="center"><img src=".github/assets/divider.svg" width="100%" alt=""></p>
+
+<p align="center">
+  <sub>Built by <a href="https://github.com/F0rger123"><b>@F0rger123</b></a> · MIT licensed</sub>
+</p>
